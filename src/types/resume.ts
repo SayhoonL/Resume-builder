@@ -1,5 +1,6 @@
 // Finite set of allowed section types
 export type SectionType =
+  | "header"
   | "summary"
   | "experience"
   | "education"
@@ -12,4 +13,14 @@ export interface ResumeSection {
   type: SectionType;
   title: string;
   content: string;
+}
+
+// Header information structure
+export interface HeaderInfo {
+  name: string;
+  email: string;
+  phone: string;
+  location: string;
+  linkedin: string;
+  website: string;
 }

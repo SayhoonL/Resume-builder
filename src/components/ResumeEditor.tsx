@@ -11,10 +11,13 @@ import {
   arrayMove,
 } from "@dnd-kit/sortable";
 
-import type { ResumeSection, SectionType } from "../types/resume";
+import type { ResumeSection, SectionType, HeaderInfo } from "../types/resume";
 import { SortableSection } from "./SortableSection";
+import { HeaderEditor } from "./HeaderEditor";
 
 interface ResumeEditorProps {
+  header: HeaderInfo;
+  onUpdateHeader: (field: keyof HeaderInfo, value: string) => void;
   sections: ResumeSection[];
   onUpdate: (
     id: string,
@@ -27,6 +30,8 @@ interface ResumeEditorProps {
 }
 
 export function ResumeEditor({
+  header,
+  onUpdateHeader,
   sections,
   onUpdate,
   onAdd,
@@ -46,10 +51,15 @@ export function ResumeEditor({
   };
 
   return (
-    <div className="resume-editor">
-      <h2>Edit Resume</h2>
+    <div className="w-full max-w-[2000px] mx-auto bg-white/[0.98] backdrop-blur-md rounded-2xl px-7 py-7 border border-white/30 shadow-[0_12px_48px_rgba(0,0,0,0.12)]">
+      <h2 className="mt-0 mb-5 text-2xl text-gray-800">Edit Resume</h2>
 
-      <select onChange={(e) => onAdd(e.target.value as SectionType)}>
+      <HeaderEditor header={header} onUpdate={onUpdateHeader} />
+
+      <select
+        onChange={(e) => onAdd(e.target.value as SectionType)}
+        className="w-full px-4 py-3 mb-6 border-2 border-gray-200 rounded-xl text-sm font-[inherit] bg-white cursor-pointer transition-all duration-200 hover:border-[#667eea] focus:outline-none focus:border-[#667eea] focus:shadow-[0_0_0_3px_rgba(102,126,234,0.1)]"
+      >
         <option value="">Add section…</option>
         <option value="summary">Summary</option>
         <option value="experience">Experience</option>
