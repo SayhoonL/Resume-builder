@@ -1,0 +1,174 @@
+/* ---------- Global ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f9fafb;
+  color: #111827;
+}
+
+/* ---------- App Layout ---------- */
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Header stays full width inside app */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.app-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* 🔑 THIS FIXES LEFT SHIFT */
+.app-main {
+  display: flex;
+  justify-content: center;   /* centers active mode */
+  min-height: 600px;
+}
+
+/* ---------- Mode Toggle ---------- */
+.mode-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.mode-toggle button {
+  padding: 6px 12px;
+  border: 1px solid #d1d5db;
+  background: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.mode-toggle button.active {
+  background: #111827;
+  color: white;
+}
+
+/* ---------- Editor ---------- */
+.resume-editor {
+  width: 100%;
+  max-width: 800px;
+
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+}
+
+.editor-section {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 16px;
+  background: #fafafa;
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.drag-handle {
+  cursor: grab;
+  font-size: 18px;
+  user-select: none;
+}
+
+.editor-title {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px;
+}
+
+.editor-content {
+  width: 100%;
+  min-height: 80px;
+  resize: vertical;
+  padding: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* ---------- Preview ---------- */
+.resume-preview {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 32px;
+  border: 1px solid #e5e7eb;
+
+  font-family: "Times New Roman", Georgia, serif;
+}
+
+.resume-section {
+  margin-bottom: 24px;
+}
+
+.resume-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 4px;
+}
+
+.resume-section-content p {
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+/* ---------- Print / PDF ---------- */
+@media print {
+  body {
+    background: white;
+  }
+
+  .app-header,
+  .resume-editor,
+  .mode-toggle {
+    display: none !important;
+  }
+
+  .app {
+    max-width: none;
+    padding: 0;
+  }
+
+  .app-main {
+    display: block;
+  }
+
+  .resume-preview {
+    border: none;
+    padding: 0;
+    margin: 0 auto;
+  }
+}
